@@ -1,0 +1,18 @@
+name: ReMog
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: '0 */3 * * *'
+
+env:
+  email_name: ${{ secrets.email_name }}
+  password_passwd: ${{ secrets.password_passwd }}
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: ReMog
+        run: bash ./mog_resume.sh
